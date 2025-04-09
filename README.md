@@ -12,4 +12,4 @@ luego ejecutamos [hdfs dfs -1s /]
 creamos la carpeta con [hdfs dfs -mkdir -p /user/root/]
 verificamos [hdfs dfs -1s /user/]
 ## EJEMPLOS
-# CREDITOS https://gist.github.com/jsdario/6d6c69398cb0c73111e49f1218960f79#file-el_quijote-txt 
+## CREDITOS https://gist.github.com/jsdario/6d6c69398cb0c73111e49f1218960f79#file-el_quijote-txt 
