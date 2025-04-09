@@ -1,8 +1,8 @@
-# Hadoop-Mio
+# Hadoop-Mio#
 ejemplos de hadoop 
 #PRE REQUISITOS
 Tener instalado docker Desktop 
-##Levantar contenedor 
+##Levantar contenedor##
 ejecutar lo siguiente [docker-compuse up -d]
 verificamos si se estan los contenedores ejecutandose [docker ps]
 para entrar en nuestro contedor usamos [docker exec -it namenode bash]
