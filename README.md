@@ -67,4 +67,7 @@ ejecutar
 hdfs dfs -cat /user/root/output_temperaturas/part-r-00000 > /tmp/temperaturas_ordenadas.txt]
 luego [exit] y luego [docker cp namenode:/tmp/temperaturas_ordenadas.txt .]
 ## ejemplo de sudoku
-
+# Descargar un script de ejemplo MapReduce y el Archivo txt 
+[hadoop-examples-0.20.205.0.jar] y [puzzle1.dta]
+## Copiar los archivos .jar y .txt al contenedor
+[docker cp hadoop-examples-0.20.205.0.jar namenode:/tmp ] y [docker cp puzzle1.dta namenode:/tmp ]
