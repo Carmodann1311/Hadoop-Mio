@@ -13,3 +13,35 @@ creamos la carpeta con [hdfs dfs -mkdir -p /user/root/]
 verificamos [hdfs dfs -1s /user/]
 ## EJEMPLOS
 ## CREDITOS https://gist.github.com/jsdario/6d6c69398cb0c73111e49f1218960f79#file-el_quijote-txt 
+# Descargar un script de ejemplo MapReduce
+https://repo1.maven.org/maven2/org/apache/hadoop/hadoop-mapreduce-examples/2.7.1/
+descargar [hadoop-mapreduce-examples-2.7.1-sources.jar ]
+mover archivo [hadoop-mapreduce-examples-2.7.1-sources.jar] a la misma carpeta  docker-hadoop.
+descargar y descomprimir [el_quijote.txt] a la misma carpeta docker-hadoop.
+## Copiar los archivos .jar y .txt al contenedor
+usar estos comandos para los archvios 
+[docker cp hadoop-mapreduce-examples-2.7.1-sources.jar namenode:/tmp]
+[docker cp el_quijote.txt namenode:/tmp ]
+## crear carpeta de entrada a contenedor
+[docker exec -it namenode bash]
+luego [
+hdfs dfs -mkdir /user/root/input_contador] 
+## copiar archivo txt
+[cd /tmp]
+luego [hdfs dfs -put el_quijote.txt /user/root/input_contador]
+por ultimo usar este comando
+[
+hadoop jar hadoop-mapreduce-examples-2.7.1-sources.jar org.apache.hadoop.examples.WordCount input_contador output_contador]
+ver resuñtado
+[hdfs dfs -cat /user/root/output_contador/*]
+comprovar
+[hdfs dfs -ls /user/root/output_contador]
+## guardar el contador
+[
+hdfs dfs -cat /user/root/output_contador/part-r-00000 > /tmp/quijote_wc.txt]
+luego
+[ exit]
+y luego
+[docker cp namenode:/tmp/quijote_wc.txt .]
+## resultado
+el archivo quijote_wc.txt que se encuentra en la carpeta docker-hadoop.
