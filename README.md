@@ -45,3 +45,26 @@ y luego
 [docker cp namenode:/tmp/quijote_wc.txt .]
 ## resultado
 el archivo quijote_wc.txt que se encuentra en la carpeta docker-hadoop.
+## ejemplo de temperaturas
+descargar archivo y descomprima 
+https://github.com/Rkrahul04/Maximum_Temp_Calculation_mapreduce/blob/master/Dataset%20-%20Calculate%20Maximum%20Temperature/Temperature
+mover el archivo [Temperature.txt] a la misma carpeta docker-hadoop.
+## Copiar los archivos .jar y .txt al contenedor
+si ya tienes [hadoop-mapreduce-examples-2.7.1-sources.jar] salta ese paso
+el archivo [Temperature.txt] usar [docker cp Temperature.txt namenode:/tmp]
+## crea la carpeta de entrada dentro del contenedor
+[docker exec -it namenode bash]
+[hdfs dfs -mkdir /user/root/input_temperaturas]
+## Ejecutar MapReduce
+[
+hadoop jar hadoop-mapreduce-examples-2.7.1-sources.jar org.apache.hadoop.examples.SecondarySort input_temperaturas output_temperaturas]
+resultado
+[hdfs dfs -cat /user/root/output_temperaturas/*]
+comprobar
+[hdfs dfs -ls /user/root/output_temperaturas]
+ejecutar 
+[
+hdfs dfs -cat /user/root/output_temperaturas/part-r-00000 > /tmp/temperaturas_ordenadas.txt]
+luego [exit] y luego [docker cp namenode:/tmp/temperaturas_ordenadas.txt .]
+## ejemplo de sudoku
+
